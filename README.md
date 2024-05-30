@@ -9,8 +9,8 @@ The `randomX` module provides functions for random selection and weighted select
 The `Card Battle Game with RandomX` is a card battle game implemented using the Move programming language and the RandomX module for generating random game data. The game features a player versus AI combat system where players can utilize items and make strategic decisions to defeat their AI opponent. The game starts with generating random data for the game setup using a smart contract.
 
 ### Demo Links
-[China](http://8.137.86.183:4037/home)
-[Inter](http://8.137.86.183:4037/home)
+- [China](http://8.137.86.183:4037)
+- [Inter](http://8.137.86.183:4037)
 
 
 ## Functions
