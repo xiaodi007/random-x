@@ -7,6 +7,7 @@
 
 module randomX::randomX {
     // use sui::transfer;
+    use std::string;
     use sui::random;
     use std::debug;
     use sui::random::{Random};
@@ -123,8 +124,102 @@ fun weighted_choices<T: copy>(seq: &vector<T>, weights: &vector<u64>, count: u64
         results
     }
 
+    /// Generate a random permutation of `seq`
+fun random_permutation<T: copy + drop>(seq: &vector<T>, rng: &mut random::Random, ctx: &mut TxContext): vector<T> {
+    let mut shuffled_seq = *seq;
+    let len = vector::length(&shuffled_seq);
+    let mut generator = random::new_generator(rng, ctx);
 
+    let mut i = 0;
+    while (i < len) {
+        let rand_index = random::generate_u64_in_range(&mut generator, i, len - 1);
+        if (i != rand_index) {
+            let temp = *vector::borrow(&shuffled_seq, i);
+            *vector::borrow_mut(&mut shuffled_seq, i) = *vector::borrow(&shuffled_seq, rand_index);
+            *vector::borrow_mut(&mut shuffled_seq, rand_index) = temp;
+        };
+        i = i + 1;
+    };
 
+    shuffled_seq
+}
+
+    fun weighted_random_permutation<T: copy + drop>(seq: &vector<T>, weights: &vector<u64>, rng: &mut random::Random, ctx: &mut TxContext): vector<T> {
+        assert!(vector::length(seq) == vector::length(weights), 0);
+
+        let mut shuffled_seq = vector::empty<T>();
+        let mut temp_seq = *seq;
+        let mut temp_weights = *weights;
+
+        let len = vector::length(&temp_seq);
+        let mut i = 0;
+
+        while (i < len) {
+            let choice = weighted_choice(&temp_seq, &temp_weights, rng, ctx);
+            vector::push_back(&mut shuffled_seq, choice);
+
+            let mut index_to_remove = 0;
+            while (index_to_remove < vector::length(&temp_seq)) {
+                if (*vector::borrow(&temp_seq, index_to_remove) == choice) {
+                    break;
+                };
+                index_to_remove = index_to_remove + 1;
+            };
+
+            vector::remove(&mut temp_seq, index_to_remove);
+            vector::remove(&mut temp_weights, index_to_remove);
+            i = i + 1;
+        };
+
+        shuffled_seq
+    }
+
+fun sample_without_replacement<T: copy + drop>(seq: &vector<T>, count: u64, rng: &mut random::Random, ctx: &mut TxContext): vector<T> {
+    assert!(count <= vector::length(seq), 0);
+    let mut generator = random::new_generator(rng, ctx);
+    let mut temp_seq = *seq;
+    let mut sampled_seq = vector::empty<T>();
+
+    let mut i = 0;
+    while (i < count) {
+        let rand_index = random::generate_u64_in_range(&mut generator, 0, vector::length(&temp_seq) - 1);
+        let choice = *vector::borrow(&temp_seq, rand_index);
+        vector::push_back(&mut sampled_seq, choice);
+        vector::remove(&mut temp_seq, rand_index);
+        i = i + 1;
+    };
+
+    sampled_seq
+}
+
+public fun weighted_sample_without_replacement<T: copy + drop>(seq: &vector<T>, weights: &vector<u64>, count: u64, rng: &mut random::Random, ctx: &mut TxContext): vector<T> {
+    assert!(vector::length(seq) == vector::length(weights), 0);
+    assert!(count <= vector::length(seq), 0);
+
+    let mut temp_seq = *seq;
+    let mut temp_weights = *weights;
+    let mut sampled_seq = vector::empty<T>();
+
+    let mut i = 0;
+    while (i < count) {
+        let choice = weighted_choice(&temp_seq, &temp_weights, rng, ctx);
+        vector::push_back(&mut sampled_seq, choice);
+
+        let mut index_to_remove = 0;
+        while (index_to_remove < vector::length(&temp_seq)) {
+            if (*vector::borrow(&temp_seq, index_to_remove) == choice) {
+                break;
+            };
+            index_to_remove = index_to_remove + 1;
+        };
+
+        vector::remove(&mut temp_seq, index_to_remove);
+        vector::remove(&mut temp_weights, index_to_remove);
+        i = i + 1;
+    };
+
+    sampled_seq
+}
 
 entry fun rollDice(rng: &Random, ctx: &mut TxContext) {
     // Define vectors representing dice, worlds, world selection, hp, and items
@@ -178,7 +273,6 @@ entry fun rollDice(rng: &Random, ctx: &mut TxContext) {
 }
 
 
-
 #[test]
 fun test_x() {
     use sui::test_scenario as ts;
@@ -216,6 +310,18 @@ fun test_x() {
 
     let choices_string = randomX::randomX::weighted_choices(&string_vector, &string_weights, 5, &mut random_state, ts.ctx());
     debug::print(&choices_string);
+
+    let shuffled_u8 = randomX::randomX::random_permutation(&u8_vector, &mut random_state, ts.ctx());
+    debug::print(&shuffled_u8);
+
+    let weighted_shuffled_u8 = randomX::randomX::weighted_random_permutation(&u8_vector, &u8_weights, &mut random_state, ts.ctx());
+    debug::print(&weighted_shuffled_u8);
+
+    let sampled_u8 = randomX::randomX::sample_without_replacement(&u8_vector, 2, &mut random_state, ts.ctx());
+    debug::print(&sampled_u8);
+
+     let weighted_sampled_u8 = randomX::randomX::weighted_sample_without_replacement(&u8_vector, &u8_weights, 2, &mut random_state, ts.ctx());
+    debug::print(&weighted_sampled_u8);
 
     ts::return_shared(random_state);
     ts.end();

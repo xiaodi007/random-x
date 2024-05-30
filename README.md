@@ -11,4 +11,8 @@ choice: Selects a single element from a given vector of elements.
 choices: Selects multiple elements from a given vector of elements.
 weighted_choice: Selects a single element from a given vector of elements based on the corresponding weights.
 weighted_choices: Selects multiple elements from a given vector of elements based on the corresponding weights.
+random_permutation: Generate a random permutation.
+weighted_random_permutation: Generate a weighted random permutation.
+sample_without_replacement:  Sample multiple elements without replacement.
+weighted_sample_without_replacement: Sample multiple elements with weights without replacement.
 ```
