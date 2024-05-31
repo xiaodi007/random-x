@@ -11,6 +11,7 @@
 ### Demo Links
 - [国内](http://8.137.86.183:4037) 暂时不行。。。
 - [国外](http://randomx.vercel.app)
+- [PPT](https://docs.google.com/presentation/d/1pNh-8yyhzkI2va3kr75IfAjIgiGfC7wE2AaZCCcQ1uc/edit?usp=sharing)
 
 ## 函数
 

@@ -12,7 +12,7 @@ The `Card Battle Game with RandomX` is a card battle game implemented using the 
 ### Demo Links
 - [China](http://8.137.86.183:4037) 
 - [Inter](http://randomx.vercel.app)
-
+- [PPT](https://docs.google.com/presentation/d/1pNh-8yyhzkI2va3kr75IfAjIgiGfC7wE2AaZCCcQ1uc/edit?usp=sharing)
 
 ## Functions
 
