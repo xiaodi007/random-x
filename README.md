@@ -1,5 +1,6 @@
 # `randomX` Module
 
+[中文](https://github.com/xiaodi007/random-x/blob/main/README-zh.md)
 ## Overview
 
 The `randomX` module provides functions for random selection and weighted selection from a vector. It is designed to help you select one or more elements randomly, or based on assigned weights, making it very useful in scenarios where selection probability needs to be considered.
@@ -9,8 +10,8 @@ The `randomX` module provides functions for random selection and weighted select
 The `Card Battle Game with RandomX` is a card battle game implemented using the Move programming language and the RandomX module for generating random game data. The game features a player versus AI combat system where players can utilize items and make strategic decisions to defeat their AI opponent. The game starts with generating random data for the game setup using a smart contract.
 
 ### Demo Links
-- [China](http://8.137.86.183:4037)
-- [Inter](http://8.137.86.183:4037)
+- [China](http://8.137.86.183:4037) 
+- [Inter](http://randomx.vercel.app)
 
 
 ## Functions
