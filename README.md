@@ -35,11 +35,21 @@ This is a card battle game implemented using the Move programming language and t
 
 "End Protocol" is a turn-based card game where players can choose to battle against AI or other players. The game is inspired by "Buckshot Roulette". At the start of each game, the system automatically configures the number of "Deadly Worlds" and "Safe Worlds" and randomly assigns initial health values (1, 2, 3, or 4) that are the same for both sides. Players use item cards to defeat each other in each randomly assigned alternate world until one player's health reaches zero. If both players still have health after the current alternate world is cleared, the system redistributes the worlds and item cards.
 
+### Item
 - Green Card: Restores 1 health point per use. Multiple uses per round are allowed but can only restore up to the initial health value for that round. Further uses are ineffective.
 - Red Card: Deals double damage for the current round. Can be used once per round.
 - Eye Card: Reveals the current world status. Can be used once per round.
 - EMP Card: Grants priority choice in the next round. Can be used once per round.
 - Purple Card: Devours the current world and moves to the next world. Can be used once per round.
+
+### AI
+It features six pre-set AI characters((qwen-max model)), each with a unique strategy preference:
+- Default
+- Joker
+- King Zhou of Shang
+- Lu Zhishen
+- Sherlock Holmes
+- Shinichi Kudo
 
 
 
