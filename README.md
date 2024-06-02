@@ -76,21 +76,36 @@ It features six pre-set AI characters((qwen-max model)), each with a unique stra
 
 ## Future Development Directions and Commercial
 
-### 1.Game Coin Exchange: 
+- Game Coin Exchange: 
+  
     Players buy game coins for special events or competitions, ensuring balance.
-### 2.NFT Trading: 
+
+- NFT Trading: 
+  
     Rare cards, equipment, and skins issued as NFTs, freely tradable in the market.
-### 3.AI Character Trading: 
+
+- AI Character Trading: 
+
     Players can trade created and trained AI characters.
-### 4.Platform Fee: 
+
+- Platform Fee: 
+
     Charged for each player and AI battle.
-### 5.Point Exchange: 
+
+- Point Exchange: 
+
     Points earned from battles can be exchanged for NFTs and traded.
-### 6.Crypto Staking: 
+
+- Crypto Staking: 
+
     Exchanged cryptocurrencies can be staked for interest.
-### 7.Battle System: 
+
+- Battle System: 
+
     Players compete against each other for points, influencing rankings and rewards.
-### 8.AI Battle: 
+
+- AI Battle: 
+
     Players create and train AI characters for others to challenge.
 
 
