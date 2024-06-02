@@ -9,8 +9,8 @@ The `randomX` module provides functions for random selection and weighted select
 
 The `Card Battle Game with RandomX` is a card battle game implemented using the Move programming language and the RandomX module for generating random game data. The game features a player versus AI combat system where players can utilize items and make strategic decisions to defeat their AI opponent. The game starts with generating random data for the game setup using a smart contract.
 
-### Demo Links
-- [China](http://8.137.86.183:4037) 
+### Demo Links(Need create a sui wallet and request devnet tokens)
+- [China](http://47.109.83.232:3036/) 
 - [Inter](http://randomx.vercel.app)
 - [PPT](https://docs.google.com/presentation/d/1pNh-8yyhzkI2va3kr75IfAjIgiGfC7wE2AaZCCcQ1uc/edit?usp=sharing)
 
@@ -31,59 +31,17 @@ weighted_sample_without_replacement: Sample multiple elements with weights witho
 
 This is a card battle game implemented using the Move programming language and the RandomX module for generating random game data. The game features a player versus AI combat system where players can utilize items and make strategic decisions to defeat their AI opponent. The game starts with generating random data for the game setup using a smart contract.
 
-## Gameplay and Interaction Logic
+## Gameplay
 
-### 1. Logging into the Game
+"End Protocol" is a turn-based card game where players can choose to battle against AI or other players. The game is inspired by "Buckshot Roulette". At the start of each game, the system automatically configures the number of "Deadly Worlds" and "Safe Worlds" and randomly assigns initial health values (1, 2, 3, or 4) that are the same for both sides. Players use item cards to defeat each other in each randomly assigned alternate world until one player's health reaches zero. If both players still have health after the current alternate world is cleared, the system redistributes the worlds and item cards.
 
-The game begins when a player logs in. This action triggers a call to a smart contract that generates the initial random data required to construct the game environment. This data includes random elements such as world settings, initial health points (HP), and items that the player and AI will use during the game.
+- Green Card: Restores 1 health point per use. Multiple uses per round are allowed but can only restore up to the initial health value for that round. Further uses are ineffective.
+- Red Card: Deals double damage for the current round. Can be used once per round.
+- Eye Card: Reveals the current world status. Can be used once per round.
+- EMP Card: Grants priority choice in the next round. Can be used once per round.
+- Purple Card: Devours the current world and moves to the next world. Can be used once per round.
 
-### 2. Generating Random Game Data
 
-Upon login, the smart contract utilizes the RandomX module to generate the following random data:
-- **World Settings**: Randomly chosen worlds that define the game environment.
-- **Health Points (HP)**: Initial health points for the player and AI.
-- **Items**: A set of items that the player and AI can use during the game.
-- **Dice Rolls**: Initial dice rolls that determine the starting conditions for the game.
-
-### 3. Entering the Game and Starting the Battle
-
-Once the game environment is set up, the player enters the game and begins the battle against the AI. The battle is turn-based, where both the player and AI take turns to make decisions using their available items and performing actions based on the game rules.
-
-### 4. Player and AI Decisions
-
-During each turn, the player and AI can:
-- Use items to gain advantages or deal damage to the opponent.
-- Roll dice to determine the outcome of certain actions.
-- Make strategic decisions based on the current game state and available resources.
-
-### 5. Winning the Game
-
-The objective of the game is to reduce the opponent's HP to zero. The player wins if they successfully defeat the AI by utilizing their items and making effective strategic decisions.
-
-## Example Interaction Flow
-
-1. **Login and Initialize Game Data**:
-    - The player logs into the game.
-    - The smart contract is called to generate random game data using the RandomX module.
-
-2. **Generate Random Data**:
-    - Worlds: Randomly select a number of worlds and their settings.
-    - HP: Randomly generate initial HP for the player and AI.
-    - Items: Randomly select a set of items for the player and AI.
-    - Dice Rolls: Generate initial dice rolls for the starting conditions.
-
-3. **Start the Game**:
-    - The player enters the game.
-    - The initial game data is displayed to the player.
-
-4. **Player and AI Turns**:
-    - The player makes a decision to use an item or perform an action.
-    - The AI makes a decision based on its available items and game state.
-    - The outcomes are determined by dice rolls and game rules.
-
-5. **End Game**:
-    - The game continues until the player's or AI's HP is reduced to zero.
-    - The winner is declared based on who reduces their opponent's HP to zero first.
 
 ## Advantages and Disadvantages
 
@@ -94,43 +52,35 @@ The objective of the game is to reduce the opponent's HP to zero. The player win
    - **Dynamic Environment**: Randomly generated world settings, items, and initial conditions ensure a constantly changing game environment, requiring players to continuously adjust their strategies.
 
 2. **Blockchain Technology**:
-   - **Fairness and Transparency**: Using smart contracts to generate game data and handle game logic ensures fairness and transparency, preventing cheating.
-   - **Immutability**: Game data and player actions recorded on the blockchain are immutable and secure.
+   - **Fairness and Transparency**: Using smart contracts to generate game data.
 
 3. **Enhanced Strategy**:
    - **Diverse Decisions**: Players can use items, roll dice, and make various strategic decisions, adding depth and strategy to the game.
    - **AI Opponents**: Fighting against AI opponents adds challenge, requiring players to use wisdom and strategy to win.
 
-4. **Automation and Security**:
-   - **Automated Execution**: Smart contracts automatically execute game rules and logic, reducing the possibility of human error and intervention.
-   - **Security**: Leveraging the security features of blockchain ensures the safety of player data and game processes.
 
-5. **Rewards and Penalties (Future)**:
+4. **Rewards and Penalties (Future)**:
    - **Instant Settlement**: After the game, smart contracts can immediately distribute rewards or enforce penalties using Sui tokens or other cryptocurrencies, enhancing the immediacy of the gaming experience.
    - **Decentralized Economy**: Transactions and rewards between players can be achieved through the token system, establishing a decentralized game economy.
 
 
-## Comparison with Traditional Card Games
+## Future Development Directions and Commercial
 
-### Advantages
+### 1.Game Coin Exchange: 
+    Players buy game coins for special events or competitions, ensuring balance.
+### 2.NFT Trading: 
+    Rare cards, equipment, and skins issued as NFTs, freely tradable in the market.
+### 3.AI Character Trading: 
+    Players can trade created and trained AI characters.
+### 4.Platform Fee: 
+    Charged for each player and AI battle.
+### 5.Point Exchange: 
+    Points earned from battles can be exchanged for NFTs and traded.
+### 6.Crypto Staking: 
+    Exchanged cryptocurrencies can be staked for interest.
+### 7.Battle System: 
+    Players compete against each other for points, influencing rankings and rewards.
+### 8.AI Battle: 
+    Players create and train AI characters for others to challenge.
 
-- **Fairness**: Traditional card games may have issues with cheating and unfair practices, while blockchain-based card games ensure fairness and transparency through smart contracts and random generation.
-- **Replayability**: Traditional card games may become monotonous due to fixed card sets and gameplay, whereas random game data enhances replayability.
-- **Data Security**: Blockchain-based game data is highly secure and tamper-proof, while traditional card game data storage may have lower security.
-- **Instant Rewards**: Blockchain games can instantly distribute rewards, enhancing the player experience.
-
-
-## Future Development Directions
-
-### 1. Reward and Punishment System
-
-Introducing a reward and punishment system where players earn rewards for victories or face penalties for losses. Rewards and penalties are settled using Sui tokens or other cryptocurrencies, establishing a decentralized economy.
-
-### 2. AI Development Marketplace
-
-Develop an AI development marketplace allowing players to create and upload their own AIs for others to battle against. Players can buy or share these AIs in the marketplace, offering varied battle experiences.
-
-### 3. Player vs. Player Battles
-
-Introduce player vs. player battles in addition to AI battles. Players can engage in real-time battles against each other, increasing the game's social and competitive aspects. Outcomes are settled through smart contracts, with rewards and penalties distributed in tokens.
 
